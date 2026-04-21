@@ -7,32 +7,34 @@ A responsive Job Search Dashboard built using React.js that fetches real-time jo
 ## 🚀 Features
 
 - 🔍 Search jobs by title
-- 📄 View job details
-- 💾 Save jobs using localStorage
+- 📄 View job details page
+- 💾 Save / Unsave jobs (localStorage)
 - 🌐 API integration (Remotive Jobs API)
-- 🔗 React Router navigation between pages
-- 📱 Responsive UI design
+- 🔄 React Router navigation
+- 📱 Fully responsive UI
+- ⚡ Pagination support
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠 Tech Stack
 
 - React.js
 - Vite
 - Axios
 - React Router DOM
 - JavaScript (ES6+)
+- Context API
 
 ---
 
-## 📡 API Used
+## 🌐 API Used
 
 https://remotive.com/api/remote-jobs
 
 ---
 
-## ▶️ How to Run Project
+## 📦 How to Run Project
 
 ```bash
 npm install
-npm run devP
+npm run dev
