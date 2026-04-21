@@ -1,29 +1,41 @@
-import { Link } from "react-router-dom";
-import { saveJob } from "../utils/localStorage";
+import { useContext } from "react";
+import { JobsContext } from "../context/JobsContext";
+import { useNavigate } from "react-router-dom";
 
 function JobCard({ job }) {
+  const { savedJobs, saveJob } = useContext(JobsContext);
+  const navigate = useNavigate();
+
+  const id = job.id || job.slug || job.url || job.title;
+
+  const isSaved = savedJobs.some((j) => {
+    const jid = j.id || j.slug || j.url || j.title;
+    return jid === id;
+  });
+
   return (
-    <div style={styles.card}>
-      <h3>{job.title}</h3>
-      <p>{job.company_name}</p>
-      <p>{job.candidate_required_location}</p>
+    <div className="job-card">
+      {/* Clickable area for details */}
+      <div onClick={() => navigate(`/job/${id}`)}>
+        <div className="job-title">{job.title}</div>
 
-      <div style={{ display: "flex", gap: "10px" }}>
-        <Link to={`/job/${job.id}`}>View</Link>
+        <p className="company">
+          {job.company_name || job.company || "Unknown Company"}
+        </p>
 
-        <button onClick={() => saveJob(job)}>Save</button>
+        <p className="location">
+          {job.location || "Remote"}
+        </p>
       </div>
+
+      <button
+        className={`save-btn ${isSaved ? "unsave" : ""}`}
+        onClick={() => saveJob(job)}
+      >
+        {isSaved ? "Unsave Job" : "Save Job"}
+      </button>
     </div>
   );
 }
-
-const styles = {
-  card: {
-    border: "1px solid #ddd",
-    padding: "15px",
-    marginBottom: "10px",
-    borderRadius: "8px",
-  },
-};
 
 export default JobCard;

@@ -35,4 +35,4 @@ https://remotive.com/api/remote-jobs
 
 ```bash
 npm install
-npm run dev
+npm run devP

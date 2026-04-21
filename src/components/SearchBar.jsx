@@ -1,9 +1,15 @@
-function SearchBar({ setQuery }) {
+import { useContext } from "react";
+import { JobsContext } from "../context/JobsContext";
+
+function SearchBar() {
+  const { searchQuery, setSearchQuery } = useContext(JobsContext);
+
   return (
     <input
       type="text"
       placeholder="Search jobs..."
-      onChange={(e) => setQuery(e.target.value)}
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
       style={{
         padding: "10px",
         width: "100%",
